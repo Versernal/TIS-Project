@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Inventory Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+    }
+    header {
+      background: #4a6cf7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    #addItemForm {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    input, button {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+    button {
+      background: #4a6cf7;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>Teacher Inventory Dashboard</header>
+
+  <div class="container">
+    <div class="card">
+      <h3>Total Items</h3>
+      <p id="totalItems">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Low Stock Items</h3>
+      <p id="lowStock">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Teachers Assigned</h3>
+      <p id="assignedTeachers">0</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin:20px;">
+    <h3>Inventory List</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Teacher Assigned</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryTable"></tbody>
+    </table>
+
+    <form id="addItemForm">
+      <input type="text" id="itemName" placeholder="Item Name" required />
+      <input type="number" id="itemQty" placeholder="Quantity" required />
+      <input type="text" id="teacherName" placeholder="Assigned Teacher" required />
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+
+  <script>
+    const inventory = [];
+
+    function updateDashboard() {
+      document.getElementById("totalItems").innerText = inventory.length;
+      document.getElementById("lowStock").innerText = inventory.filter(i => i.qty < 5).length;
+
+      const teacherSet = new Set(inventory.map(i => i.teacher));
+      document.getElementById("assignedTeachers").innerText = teacherSet.size;
+
+      const table = document.getElementById("inventoryTable");
+      table.innerHTML = "";
+
+      inventory.forEach(item => {
+        const row = `<tr>
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>${item.teacher}</td>
+        </tr>`;
+        table.innerHTML += row;
+      });
+    }
+
+    document.getElementById("addItemForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("itemName").value;
+      const qty = parseInt(document.getElementById("itemQty").value);
+      const teacher = document.getElementById("teacherName").value;
+
+      inventory.push({ name, qty, teacher });
+
+      updateDashboard();
+
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
