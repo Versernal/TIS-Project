@@ -16,7 +16,7 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 24px;
+      font-size: 36px;
     }
     .container {
       display: grid;
@@ -64,22 +64,22 @@
   </style>
 </head>
 <body>
-  <header>Teacher Inventory Dashboard</header>
+<header>Teacher Inventory Dashboard</header>
 
   <div class="container">
-    <div class="card">
-      <h3>Total Items</h3>
-      <p id="totalItems">0</p>
+  <div class="card">
+     <h3>Total Items</h3>
+     <p id="totalItems">0</p>
     </div>
 
     <div class="card">
-      <h3>Low Stock Items</h3>
-      <p id="lowStock">0</p>
+     <h3>Low Stock Items</h3>
+    <p id="lowStock">0</p>
     </div>
 
     <div class="card">
-      <h3>Teachers Assigned</h3>
-      <p id="assignedTeachers">0</p>
+    <h3>Teachers Assigned</h3>
+    <p id="assignedTeachers">0</p>
     </div>
   </div>
 
@@ -87,21 +87,22 @@
     <h3>Inventory List</h3>
 
     <table>
-      <thead>
-        <tr>
-          <th>Item Name</th>
-          <th>Quantity</th>
-          <th>Teacher Assigned</th>
-        </tr>
-      </thead>
-      <tbody id="inventoryTable"></tbody>
+    <thead>
+       <tr>
+       
+         <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Teacher Assigned</th>
+      </tr>
+    </thead>
+     <tbody id="inventoryTable"></tbody>
     </table>
 
     <form id="addItemForm">
-      <input type="text" id="itemName" placeholder="Item Name" required />
-      <input type="number" id="itemQty" placeholder="Quantity" required />
-      <input type="text" id="teacherName" placeholder="Assigned Teacher" required />
-      <button type="submit">Add Item</button>
+    <input type="text" id="itemName" placeholder="Item Name" required />
+    <input type="number" id="itemQty" placeholder="Quantity" required />
+    <input type="text" id="teacherName" placeholder="Assigned Teacher" required />
+    <button type="submit">Add Item</button>
     </form>
   </div>
 
@@ -123,7 +124,17 @@
           <td>${item.name}</td>
           <td>${item.qty}</td>
           <td>${item.teacher}</td>
+    
+    
+    
+    <td>
+    <button class="remove-btn" onclick="removeItem(${index})">Remove<Remove<Button>
+          
         </tr>`;
+        
+
+
+        
         table.innerHTML += row;
       });
     }
@@ -141,6 +152,7 @@
 
       e.target.reset();
     });
-  </script>
+</script>
 </body>
 </html>
+<!--https://www.youtube.com/watch?v=xZ1ba-RLrjo&t=17849s-->
