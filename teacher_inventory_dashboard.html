@@ -61,19 +61,19 @@
       cursor: pointer;
       border: none;
     }
-  </style>
+</style>
 </head>
 <body>
 <header>Teacher Inventory Dashboard</header>
 
   <div class="container">
   <div class="card">
-     <h3>Total Items</h3>
-     <p id="totalItems">0</p>
-    </div>
+  <h3>Total Items</h3>
+  <p id="totalItems">0</p>
+  </div>
 
     <div class="card">
-     <h3>Low Stock Items</h3>
+    <h3>Low Stock Items</h3>
     <p id="lowStock">0</p>
     </div>
 
@@ -88,30 +88,40 @@
 
     <table>
     <thead>
-       <tr>
+    <tr>
        
-         <th>Item Name</th>
-        <th>Quantity</th>
-        <th>Teacher Assigned</th>
-      </tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Teacher Assigned</th>
+    <th>Actions</th>
+    </tr>
     </thead>
-     <tbody id="inventoryTable"></tbody>
+    <tbody id="inventoryTable"></tbody>
     </table>
 
     <form id="addItemForm">
     <input type="text" id="itemName" placeholder="Item Name" required />
     <input type="number" id="itemQty" placeholder="Quantity" required />
-    <input type="text" id="teacherName" placeholder="Assigned Teacher" required />
+    <input type="text" id="teacherName" placeholder="Teacher Name" required />
     <button type="submit">Add Item</button>
+    <button class="remove-btn" onclick="removeItem(${index})">Remove<Remove<Button>
     </form>
   </div>
 
   <script>
+   
+    fucntion RemoveItem(index) {
+      inventory.splice(index,1);
+      updateDasboard();
+      :
+    }
+    
     const inventory = [];
 
     function updateDashboard() {
       document.getElementById("totalItems").innerText = inventory.length;
       document.getElementById("lowStock").innerText = inventory.filter(i => i.qty < 5).length;
+    
 
       const teacherSet = new Set(inventory.map(i => i.teacher));
       document.getElementById("assignedTeachers").innerText = teacherSet.size;
@@ -128,7 +138,7 @@
     
     
     <td>
-    <button class="remove-btn" onclick="removeItem(${index})">Remove<Remove<Button>
+
           
         </tr>`;
         
@@ -156,3 +166,4 @@
 </body>
 </html>
 <!--https://www.youtube.com/watch?v=xZ1ba-RLrjo&t=17849s-->
+<!-- https://www.youtube.com/watch?v=47rl77sLbCE -->
