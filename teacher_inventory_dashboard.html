@@ -6,7 +6,7 @@
   <title>Teacher Inventory Dashboard</title>
   <style>
     body {
-      font-family: "Lucida Console", "Courier New", monospace;
+      font-family: "Lucida Console", "Courier New", monospace;;
       margin: 0;
       padding: 0;
       background: #f5f6fa;
@@ -61,19 +61,19 @@
       cursor: pointer;
       border: none;
     }
-</style>
+  </style>
 </head>
 <body>
 <header>Teacher Inventory Dashboard</header>
 
   <div class="container">
   <div class="card">
-  <h3>Total Items</h3>
-  <p id="totalItems">0</p>
-  </div>
+     <h3>Total Items</h3>
+     <p id="totalItems">0</p>
+    </div>
 
     <div class="card">
-    <h3>Low Stock Items</h3>
+     <h3>Low Stock Items</h3>
     <p id="lowStock">0</p>
     </div>
 
@@ -88,28 +88,31 @@
 
     <table>
     <thead>
-    <tr>
-       
+      <tr>      
     <th>Item Name</th>
     <th>Quantity</th>
-    <th>Teacher Name</th>
-    <th>Actions</th>
+    <th>Teacher Assigned</th>
+   <th>Actions</th>
     </tr>
     </thead>
-    <tbody id="inventoryTable"></tbody>
+     <tbody id="inventoryTable"></tbody>
     </table>
-
     <form id="addItemForm">
-    <input type="text" id="item Name" placeholder="Item Name" required />
-    <input type="number" id="item Qty" placeholder="Quantity" required />
-    <input type="text" id="teacher Name" placeholder="Teacher Name" required />
+    <input type="text" id="itemName" placeholder="Item Name" required />
+    <input type="number" id="itemQty" placeholder="Quantity" required />
+    <input type="text" id="teacherName" placeholder="Teacher Name" required />
     <button type="submit">Add Item</button>
     <button class="remove-btn" onclick="removeItem(${index})">Remove<Remove<Button>
     </form>
   </div>
-
-  <script>
-   
+ <footer>
+        <p>Enter the same info Item and teacher to remove it from Inventry</p>
+        <p>Website help: TIS@gmail.com Company  Number: 505-323-2121</p>
+    </footer>
+<img src="https://cdn.edmentum.com/assets/hero/tfs/overview/_hero/90282/teacher-or-educator-Edmentum-International-article.webp"
+</body>
+</html>
+  <script>  
     fucntion RemoveItem(index) {
       inventory.splice(index,1);
       updateDasboard();
@@ -133,18 +136,9 @@
         const row = `<tr>
           <td>${item.name}</td>
           <td>${item.qty}</td>
-          <td>${item.teacher}</td>
-    
-    
-    
-    <td>
-
-          
-        </tr>`;
-        
-
-
-        
+          <td>${item.teacher}</td>   
+          <td>       
+        </tr>`;   
         table.innerHTML += row;
       });
     }
