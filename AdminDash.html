@@ -29,6 +29,7 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
     .card h3 {
       margin-top: 0;
@@ -108,20 +109,42 @@
     </table>
   </div>
 
+  <div class="card" style="margin:20px;">
+    <h3>Request History</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Teacher</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Glue Sticks</td>		<td>40</td>		<td>Ms. Adams</td>		<td>Approved</td></tr>
+        <tr><td>Paper Clips</td>		<td>500</td>	<td>Mr. Martinez</td>	<td>Denied</td></tr>
+        <tr><td>Dry Erase Markers</td>	<td>30</td>		<td>Ms. Costello</td>	<td>Approved</td></tr>
+        <tr><td>Staples</td>			<td>20</td>		<td>Ms. McKenny</td>	<td>Approved</td></tr>
+        <tr><td>Construction Paper</td>	<td>200</td>	<td>Mr. Irwin</td>		<td>Denied</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <script>
     const requests = [
       { item: "Markers", qty: 25, teacher: "Ms. Adams", status: "Pending" },
       { item: "Blank Papers", qty: 150, teacher: "Ms. Costello", status: "Pending" },
       { item: "Notebooks", qty: 15, teacher: "Mr. Martinez", status: "Pending" },
+      { item: "Staplers", qty: 5, teacher: "Ms. McKenny", status: "Pending" },
       { item: "Pencils", qty: 50, teacher: "Mr. Irwin", status: "Approved" },
-      { item: "Pencils", qty: 9999, teacher: "Mr. Irwin", status: "Denied" }
+      { item: "Pencils", qty: 500, teacher: "Mr. Irwin", status: "Denied" }
     ];
 
     function updateDashboard() {
-      const pending = requests.filter(r => r.status === "Pending").length;
-      const approved = requests.filter(r => r.status === "Approved").length;
-      const denied = requests.filter(r => r.status === "Denied").length;
-      const teachers = new Set(requests.map(r => r.teacher)).size;
+      const pending = requests.filter(r => r.status == "Pending").length;
+      const approved = requests.filter(r => r.status == "Approved").length;
+      const denied = requests.filter(r => r.status == "Denied").length;
 
       document.getElementById("pendingRequests").innerText = pending;
       document.getElementById("approvedRequests").innerText = approved;
@@ -131,14 +154,14 @@
       table.innerHTML = "";
 
       requests.forEach((r, index) => {
-        const circle = r.status === "Pending" ? `<span class="status-circle"></span>` : "";
+        const circle = r.status == "Pending" ? `<span class="status-circle"></span>` : "";
 
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${circle}${r.item}</td>
+          <td>${r.item}</td>
           <td>${r.qty}</td>
           <td>${r.teacher}</td>
-          <td>${r.status}</td>
+          <td>${circle}${r.status}</td>
           <td>
             <button class="approve-btn" onclick="approveRequest(${index})">Approve</button>
             <button class="deny-btn" onclick="denyRequest(${index})">Deny</button>
