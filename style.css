@@ -2,6 +2,7 @@ body{
     background: linear-gradient( to top, #f5f6fa, #4a6cf7);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 h1{
     font-family: Arial, sans-serif;
@@ -11,7 +12,7 @@ h1{
     font-size: 36px;
 
 }
-.mainBlock{
+.container{
     font-family: Arial, sans-serif;
     margin: 20px auto;
     background-color: white;
@@ -38,12 +39,17 @@ form{
     font-weight: bold;
 }
 
-button{
+button {
     background-color: #4a6cf7;
     color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     width: 100px;
     border-color: #4a6cf7;
-
+    padding: 10px;
+}
+input{
+    padding: 8px;
+    border-radius: 8upx;
+    border: 1px solid #ccc;
 }
