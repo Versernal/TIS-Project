@@ -5,7 +5,7 @@ function login(){
     let password = document.getElementById('password').value;
 
     if(username === "administrator@gmail.com" && password === "Admin123"){
-     window.location.href =  "administrator@gmail.com"
+     window.location.href = "AdminDash.html"
     }
 
     if(username === "teacher@gmail.com" && password === "Teacher123!"){
