@@ -102,21 +102,17 @@
     <input type="number" id="itemQty" placeholder="Quantity" required />
     <input type="text" id="teacherName" placeholder="Teacher Name" required />
     <button type="submit">Add Item</button>
-    <button class="remove-btn" onclick="removeItem(${index})">Remove<Remove<Button>
     </form>
   </div>
  <footer>
         <p>Enter the same information for the corresponding Item and teacher to remove it from the Teachers Inventroy.</p>
         <p>Website Help : TIS@gmail.com || Company  Number : 505-323-2121 ||  Technical support : TIS.Tech23@gmail.com - 404-1284-2812 </p>
     </footer>
-<img src="https://cdn.edmentum.com/assets/hero/tfs/overview/_hero/90282/teacher-or-educator-Edmentum-International-article.webp"
-</body>
-</html>
+<img src="https://cdn.edmentum.com/assets/hero/tfs/overview/_hero/90282/teacher-or-educator-Edmentum-International-article.webp">
   <script>  
-    fucntion RemoveItem(index) {
+    function removeItem(index) {
       inventory.splice(index,1);
-      updateDasboard();
-      :
+      updateDashboard();
     }
     
     const inventory = [];
@@ -132,13 +128,17 @@
       const table = document.getElementById("inventoryTable");
       table.innerHTML = "";
 
-      inventory.forEach(item => {
-        const row = `<tr>
+      inventory.forEach((item, index)=> {
+        const row = `
+        <tr>
           <td>${item.name}</td>
           <td>${item.qty}</td>
           <td>${item.teacher}</td>   
-          <td>       
-        </tr>`;   
+          <td>
+           <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        </td>
+        </tr>
+        `;
         table.innerHTML += row;
       });
     }
