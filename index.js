@@ -4,9 +4,9 @@ function login(){
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
 
-    //if(username === "administrator@gmail.com" && password === "Admin123"){
-    // window.location.href =
-    //}
+    if(username === "administrator@gmail.com" && password === "Admin123"){
+     window.location.href =  "administrator@gmail.com"
+    }
 
     if(username === "teacher@gmail.com" && password === "Teacher123!"){
         window.location.href= "teacher_inventory_dashboard.html";
